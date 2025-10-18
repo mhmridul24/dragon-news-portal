@@ -1,13 +1,23 @@
-import React, { use } from 'react';
-const catagoryPromise =fetch("categories.json").then((res)=> res.json());
+import React, { use } from "react";
+import { NavLink } from "react-router";
+const catagoryPromise = fetch("categories.json").then((res) => res.json());
 
 const Catagories = () => {
-    const catagories = use(catagoryPromise);
-    return (
-        <div>
-            <h2 className='font-bold'>All Catagories ({catagories.length})  </h2>
-        </div>
-    );
+  const catagories = use(catagoryPromise);
+  return (
+    <div>
+      <h2 className="font-bold">All Catagories ({catagories.length}) </h2>
+      <div className="grid grid-cols-1 mt-5 gap-2">
+        {catagories.map((catagory) => (
+        <NavLink key={catagory.id} className={"btn bg-base-100 border-0 hover:bg-base-200 font-semibold text-accent"} 
+            to={`/catagory/${catagory.id}`}
+        >
+            {catagory.name}
+        </NavLink>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Catagories;
