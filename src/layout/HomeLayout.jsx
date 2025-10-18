@@ -14,6 +14,7 @@ const HomeLayout = () => {
                     <Outlet></Outlet>
                 </section>
                 <section className="right_nav"></section>
+                
             </main>
         </div>
     );
